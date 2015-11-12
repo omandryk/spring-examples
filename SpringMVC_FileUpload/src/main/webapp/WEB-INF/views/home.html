@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Page</title>
+    <link rel="stylesheet" type="text/css" href="/resources/style.css" />
+</head>
+<body>
+<h1>Hello World!</h1>
+<h2>This is simple Thymeleaf</h2>
+<hr/>
+<h2>Upload File:</h2>
+<form method="POST" enctype="multipart/form-data" action="/upload1">
+    <label>Profile Picture Uploading 1</label>:
+    <input type="file" name="profilePicture" accept="image/jpeg,image/png,image/gif" />
+    <input type="submit" th:value="Submit"/>
+</form>
+<hr/>
+<form method="POST" enctype="multipart/form-data" action="/upload2">
+    <label>Profile Picture Uploading 2</label>:
+    <input type="file" name="profilePicture" accept="image/jpeg,image/png,image/gif" />
+    <input type="submit" th:value="Submit"/>
+</form>
+</body>
+</html>
