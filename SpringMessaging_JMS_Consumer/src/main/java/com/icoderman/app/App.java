@@ -11,6 +11,7 @@ public class App {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		AlertService alertService = context.getBean(AlertService.class);
 		//System.out.println(alertService.receiveAlert());
+		System.out.println("I'm going to receive message...");
 		System.out.println(alertService.receiveAlertPerson());
 	}
 }
