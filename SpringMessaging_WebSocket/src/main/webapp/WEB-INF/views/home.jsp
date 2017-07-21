@@ -2,34 +2,31 @@
 <head>
     <title>Home</title>
     <script src="/resources/jquery.min.js"></script>
-    <script src="/resources/sockjs.min.js"></script>
 </head>
 <body>
 <button id="stop">Stop</button>
 
 <script type="text/javascript">
-    var sock = new SockJS('/marco');
+    var url = 'ws://' + window.location.host + '/marco';
+    var sock = new WebSocket(url);
 
-    sock.onopen = function () {
+    sock.onopen = function() {
         console.log('Opening');
+        $('#output').append('Opening <br/>');
         sayMarco();
-    }
+    };
 
-    sock.onmessage = function (e) {
-        console.log('Received message: ', e.data);
-        $('#output').append('Received "' + e.data + '"<br/>');
-        setTimeout(function () {
-            sayMarco()
-        }, 2000);
-    }
+    sock.onmessage = function(e) {
+        $('#output').append('Received message: "' + e.data + '"<br/>');
+        setTimeout(function(){sayMarco()}, 2000);
+    };
 
-    sock.onclose = function () {
-        console.log('Closing');
-    }
+    sock.onclose = function() {
+        $('#output').append('Closing <br/>');
+    };
 
     function sayMarco() {
-        console.log('Sending Marco!');
-        $('#output').append('Sending "Marco!"<br/>');
+        $('#output').append('Sending Marco! <br/>');
         sock.send("Marco!");
     }
 
